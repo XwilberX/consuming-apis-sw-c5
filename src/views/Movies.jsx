@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const API = "http://www.omdbapi.com/?&apikey=a43c6a1"
+const API = "https://imdb-api.com/en/API/SearchMovie/k_lypbs3mg/"
 
 
 const Movies = () => {
@@ -13,12 +13,12 @@ const Movies = () => {
 
 	const getMovies = async () => {
 		// search
-		const res = await fetch(`${API}&s=batman`);
+		const res = await fetch(`${API}leon the professional`);
 		const resJSON = await res.json();
 
 		if (resJSON) {
 			setState({
-				data: resJSON.Search,
+				data: resJSON.results,
 				loading: false,
 				error: "",
 			});
@@ -36,15 +36,15 @@ const Movies = () => {
 			return setState({ ...state, error: "Please write a valid text" });
 		}
 
-		const response = await fetch(`${API}&s=${state.searchTerm}`);
+		const response = await fetch(`${API}${state.searchTerm}`);
 		const data = await response.json();
 
-		if (!data.Search) {
+		if (!data.results) {
 			return setState({ ...state, error: "There are no results." });
 		}
 
 		return setState({
-			data: data.Search,
+			data: data.results,
 			searchTerm: "",
 			error: "",
 		});
@@ -73,14 +73,14 @@ const Movies = () => {
 			<div class="container mx-auto p-5 grid grid-cols-4 gap-4">
 				{data.map((movie) => (
 					<div class="max-w-sm rounded overflow-hidden shadow-lg">
-						<img class="w-full" src={movie.Poster} alt="Sunset in the mountains" />
+						<img class="w-full" src={movie.image} alt="Sunset in the mountains" />
 						<div class="px-6 py-4">
-							<div class="font-bold text-xl mb-2">{movie.Title} ({movie.Year})</div>
+							<div class="font-bold text-xl mb-2">{movie.title} - {movie.description}</div>
 
 						</div>
 						<div class="px-6 pt-4 pb-2">
 							<p class="text-gray-700 text-base">
-								Tipo: {movie.Type}
+								Tipo: {movie.resultType}
 							</p>
 						</div>
 					</div>
