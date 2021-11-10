@@ -115,7 +115,6 @@ const Music = () => {
             </form>
             <div class="container mx-auto p-5 grid">
                 <Player trackList={tracks} />
-                <p>{tracks[0].title}</p>
             </div>
         </>
     );
