@@ -13,7 +13,7 @@
 
 Repo for [Vite](https://github.com/vuejs/vite) + [React](https://github.com/facebook/react) + [Tailwind](https://github.com/tailwindlabs/tailwindcss)
 
-🌐 [Live Demo](https://vite-react-starter.netlify.app/)
+🌐 [Live Demo](https://zealous-volhard-2c49df.netlify.app/)
 
 ## Installation
 
